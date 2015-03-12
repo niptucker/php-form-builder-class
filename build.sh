@@ -1,7 +1,13 @@
 #!/bin/bash
 
+if [ -z "$1" ]; then
+    echo "Error: WWW_ROOT folder name ($1) is empty. You should specify it, e.g.:"
+    echo './build.sh /var/www'
+    exit
+fi
+
 # root directory for web available filed
-WWW_ROOT=../../../www
+WWW_ROOT=$1
 
 # source web available scripts directory
 PFBC_SOURCE=PFBC
@@ -14,7 +20,7 @@ fi
 
 if [ ! -e $WWW_ROOT ]; then
     echo "WWW_ROOT directory ($WWW_ROOT) does not exist and cannot be created! Stopping..."
-    return
+    exit
 fi
 
 if [ -e $PFBC_SOURCE ]; then

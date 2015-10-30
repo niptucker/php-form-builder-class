@@ -356,7 +356,9 @@ JS;
 					type: "{$this->_attributes["method"]}",
 					data: jQuery("#$id").serialize(),
 					success: function(response) {
-                                                response = JSON.parse(response);
+						if (typeof response != "object") {
+							response = JSON.parse(response);
+						}
 						if(response != undefined && typeof response == "object" && response.errors) {
 JS;
 
